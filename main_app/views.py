@@ -1,9 +1,22 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from . import Pokemon
 
 # Create your views here.
 from django.http import HttpResponse
 
+class CreatePokemon(CreateView):
+  model = Pokemon
+  fields = '__all__'
+  success_url = '/pokemon/'
+
+class PokemonUpdate(UpdateView):
+  model = Pokemon
+  fields = ['name', 'type', 'weight']
+
+class PokemonDelete(DeleteView):
+  model = Pokemon
+  success_url = '/pokemon'
 
 #Define the home view 
 def home(request):
