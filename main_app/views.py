@@ -1,21 +1,9 @@
 from django.shortcuts import render
-from . import views
+from . import Pokemon
 
 # Create your views here.
 from django.http import HttpResponse
 
-class Pokemon:  # Note that parens are optional if not inheriting from another class
-  def __init__(self, name, type, weight, level):
-    self.name = name
-    self.type = type
-    self.weight = weight
-    self.level = level
-
-pokemons = [
-  Pokemon('Squirtle', 'Water', '10', 15),
-  Pokemon('Pikachi', 'Electric', '15', 67),
-  Pokemon('Charmander', 'Fire', '7', 12)
-]
 
 #Define the home view 
 def home(request):
@@ -24,3 +12,6 @@ def about(request):
     return render(request, 'about.html')
 def pokedex(request):
   return render(request, 'pokemon/index.html', { 'pokemons': pokemons})
+def pokemon_detail(request, pokemon_id):
+  pokemon = Pokemon.objects.get(id = pokemon_id)
+  return render(request, 'pokemon/detail.html', {'pokemon': pokemon})

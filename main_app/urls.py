@@ -7,5 +7,6 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
-     path('pokemon/', views.pokedex, name='pokedex'),
+    path('pokemon/', views.pokedex, name='pokedex'),
+    path('pokemon/<int:pokemon_id>/', views.cats_detail, name = 'detail'),
 ]
