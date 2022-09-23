@@ -1,4 +1,7 @@
 from django.db import models
+from django.urls import reverse
+from datetime import date
+from django.contrib.auth.models import User
 
 #Items Model 
 class Items(models.Model):
@@ -27,6 +30,7 @@ class Location(models.Model):
             default=LOCATION[0][0]
         )
 
+user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 #POKEMON FK 
 pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE)

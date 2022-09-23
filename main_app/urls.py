@@ -14,4 +14,6 @@ urlpatterns = [
     path('pokemon/<int:pk>/delete/', views.PokemonDelete.as_view(), name='pokemon_delete'),
     path('pokemon/<int:pk_id>/add_location/', views.add_location, name='add_location'),
     path('pokemon/<int:pokemon_id>/assoc_items/<int:items_id>/', views.assoc_items, name='assoc_items'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
