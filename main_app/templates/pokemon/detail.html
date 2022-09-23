@@ -33,9 +33,47 @@
       {% endfor %}
     </tbody>
   </table>
-</div>
-</div>
 
+  
+</div>
+</div>
+<hr>
+<div class="row">
+  <div class="col s6">
+    <h3>{{ pokemon.name }}'s Items</h3>
+    {% if pokemon.items.count %}
+      {% for items in pokemon.items.all %}
+        <div class="card">
+          <div class="card-content">
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>No Items :(</h5>
+    {% endif %}
+  </div>
+  <div class="col s6">
+    <h3>Available Toys</h3>
+    {% if items.count %}
+      {% for items in items.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+             {{ toy.name }}
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'assoc_items' pokemon.id items.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn">Add</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>{{cat.name}} Already Has All Items Available</h5>
+    {% endif %}
+  </div>
 <script>
   var dateEl = document.getElementById('id_date');
   M.Datepicker.init(dateEl, {
